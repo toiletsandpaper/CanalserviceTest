@@ -13,7 +13,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 import settings
-
+import database
 
 def get_credentials():
     creds = None
@@ -52,6 +52,7 @@ def get_data(creds: Credentials = get_credentials()) -> pd.DataFrame:
         
         df_data['rub_value'] = df_data['usd_value'] * usd_to_rub_rate
         print(df_data)
+        return df_data
         # for row in values:
         #     print(f'{row[0]} {row[1]} {row[2]} {row[3]}')
     except HttpError as err:
@@ -74,5 +75,5 @@ def get_exchange_rate() -> float:
             return float(usd_rate.replace(',', '.'))
         
     
-get_data(creds = get_credentials())
-
+data = get_data(creds = get_credentials())
+database.dump_to_sql(data)
