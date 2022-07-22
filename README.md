@@ -1,0 +1,1 @@
+Spreadsheet link (allow to read for all for now): https://docs.google.com/spreadsheets/d/1ogdQQD10AM2cBwprYhm-Oh4oAeFzfaoQAgsfYCXwzkQ/edit?usp=sharing
