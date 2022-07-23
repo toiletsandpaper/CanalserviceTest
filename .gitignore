@@ -143,3 +143,6 @@ tempCodeRunnerFile.py
 # Google Cloud API
 credentials.json
 *token.json
+
+# Telegram Bot API
+notification_list.json

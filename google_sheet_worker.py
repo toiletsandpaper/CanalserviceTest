@@ -5,7 +5,6 @@ import pandas as pd
 import requests
 import datetime
 import xml.etree.ElementTree as ET
-
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -56,6 +55,7 @@ def get_data(creds: Credentials = get_credentials()) -> pd.DataFrame:
         df_data = pd.DataFrame(values[0:], columns=['nn', 'order_id', 'usd_value', 'delivery_date'])
         df_data['usd_value'] = df_data['usd_value'].astype(float)
         df_data['nn'] = df_data['nn'].astype(int)
+        df_data['delivery_date'] = pd.to_datetime(df_data['delivery_date'], format='%d.%m.%Y')
         
         usd_to_rub_rate = get_exchange_rate()
         

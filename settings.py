@@ -14,3 +14,6 @@ SQL_ECHO = False
 
 CHECK_INTERVAL = 30 # in seconds
 
+TELEGRAM_BOT_DATA_FOLDER = f'{os.getcwd()}/bot_data'
+TELEGRAM_BOT_NOTIFICATION_LIST_PATH = f'{TELEGRAM_BOT_DATA_FOLDER}/notification_list.csv'
+
