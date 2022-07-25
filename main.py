@@ -3,7 +3,6 @@
 import threading
 from threading import Thread
 import datetime
-from django.conf import Settings
 import pandas as pd
 from tomlkit import date
 import settings
@@ -16,8 +15,6 @@ def main(interval: int = settings.CHECK_INTERVAL) -> None:
     Args:
         interval (int, optional): GoogleSheet check interval. Defaults to settings.CHECK_INTERVAL.
     """    
-    bot_thread = Thread(target=bot.start_bot)
-    bot_thread.start()
     threading.Timer(interval, main).start()
     
     google_creds = gsw.get_credentials(api_key_path=settings.GOOGLE_API_TOKEN_PATH,
@@ -69,4 +66,6 @@ def send_notification(message: str, data: pd.DataFrame) -> None:
 
 
 if __name__ == '__main__':
+    bot_thread = Thread(target=bot.start_bot)
+    bot_thread.start()
     main()
