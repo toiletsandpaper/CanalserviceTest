@@ -141,8 +141,8 @@ tempCodeRunnerFile.py
 .DS_Store
 
 # Google Cloud API
-credentials.json
+*credentials.json
 *token.json
 
 # Telegram Bot API
-notification_list.json
+*notification_list.csv
