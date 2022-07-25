@@ -6,6 +6,8 @@ import settings
 token = os.environ['TELEGRAM_BOT_TOKEN']
 bot = telebot.TeleBot(token)
 
+
+
 @bot.message_handler(commands=['start'])
 def start_message(message):
     bot.send_message(message.chat.id, 
@@ -54,7 +56,7 @@ def notify_users(message):
     with open(settings.TELEGRAM_BOT_NOTIFICATION_LIST_PATH, 'r', newline='') as f:
         list_of_users = csv.reader(f, delimiter=',').__next__()
         for user in list_of_users:
-            bot.send_message(user, message)
+            bot.send_message(user, message, parse_mode='Markdown')
 
 def start_bot():
     bot.infinity_polling()
