@@ -17,6 +17,7 @@ def main(interval: int = settings.CHECK_INTERVAL) -> None:
         interval (int, optional): GoogleSheet check interval. Defaults to settings.CHECK_INTERVAL.
     """    
     bot_thread = Thread(target=bot.start_bot)
+    bot_thread.start()
     threading.Timer(interval, main).start()
     
     google_creds = gsw.get_credentials(api_key_path=settings.GOOGLE_API_TOKEN_PATH,
